@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Task.h"
+#import "TaskCategory.h" 
 @interface HomeTableViewController : UITableViewController
+
+@property (nonatomic, strong) NSMutableArray *tasks;
 
 @end

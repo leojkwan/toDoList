@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D2134" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="F9v-eh-SC7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D2134" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="uSa-wP-BTh">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -7,7 +7,7 @@
         <!--My Tasks-->
         <scene sceneID="1ai-Qx-7WL">
             <objects>
-                <tableViewController id="U0v-xn-Ovn" sceneMemberID="viewController">
+                <tableViewController id="U0v-xn-Ovn" customClass="HomeTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="vfh-WY-tFW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,9 +26,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="5t8-le-cYp" kind="push" id="eCr-GC-BNT"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -36,17 +33,23 @@
                             <outlet property="delegate" destination="U0v-xn-Ovn" id="o4r-7f-d2f"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="My Tasks" id="wCD-rw-yem"/>
+                    <navigationItem key="navigationItem" title="My Tasks" id="wCD-rw-yem">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="GFF-xn-NhJ">
+                            <connections>
+                                <segue destination="5t8-le-cYp" kind="push" id="qIj-Fv-P6J"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z4p-s5-Wyy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="871" y="435"/>
+            <point key="canvasLocation" x="784.5" y="434.5"/>
         </scene>
-        <!--Category-->
+        <!--Add Task-->
         <scene sceneID="k2D-DZ-g23">
             <objects>
-                <viewController id="5t8-le-cYp" sceneMemberID="viewController">
+                <viewController id="5t8-le-cYp" customClass="ChooseCategoryViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OxS-bw-iQ2"/>
                         <viewControllerLayoutGuide type="bottom" id="VZd-OO-8Su"/>
@@ -55,12 +58,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What is your task?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Y1-4J-Wzf">
-                                <rect key="frame" x="116" y="91" width="142" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nal-Ju-l0X">
                                 <rect key="frame" x="21" y="183" width="150" height="150"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -105,19 +102,25 @@
                                     <segue destination="F9v-eh-SC7" kind="push" id="aLd-3U-M1M"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Y1-4J-Wzf">
+                                <rect key="frame" x="139" y="98" width="96" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Category" id="d38-Ak-iZZ"/>
+                    <navigationItem key="navigationItem" title="Add Task" id="d38-Ak-iZZ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qHO-GN-NZV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1289" y="435"/>
+            <point key="canvasLocation" x="1288.5" y="434.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Task View Controller-->
         <scene sceneID="24e-CT-8vr">
             <objects>
-                <viewController id="F9v-eh-SC7" sceneMemberID="viewController">
+                <viewController id="F9v-eh-SC7" customClass="AddTaskViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bpb-V6-DM0"/>
                         <viewControllerLayoutGuide type="bottom" id="ZOs-E8-5hr"/>
@@ -191,7 +194,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="78n-JS-9a3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1688.5" y="434.5"/>
+            <point key="canvasLocation" x="1747.5" y="434.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rcH-tf-540">
