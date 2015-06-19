@@ -10,19 +10,20 @@
 
 @implementation Task
 
--(instancetype) initWithName:(NSString *)name category:(taskCategory *)category {
-
+-(instancetype) initWithName:(NSString *)name category:(taskCategory *)category type:(taskType *)type {
     self = [super init];
     
     if (self) {
         _name = name;
         _category = category;
+        _type = type;
     }
+    
     return self;
 }
 
 -(instancetype) init {
-    self = [self initWithName:@"" category:[[taskCategory alloc] initWithTitle:@""]];
+    self = [self initWithName:@"" category:[[taskCategory alloc] initWithTitle:@""] type:[[taskType alloc] initWithName:@""]];
     return self;
 }
 

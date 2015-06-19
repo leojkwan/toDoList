@@ -8,12 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "taskCategory.h"
+#import "taskType.h"
+
 
 @interface Task : NSObject
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) taskCategory *category;
+@property (nonatomic, strong) taskType *type;
 
--(instancetype) initWithName:(NSString *)name category:(taskCategory *) category;
+-(instancetype) initWithName:(NSString *)name category:(taskCategory *)category type:(taskType *)type;
+
 
 @end

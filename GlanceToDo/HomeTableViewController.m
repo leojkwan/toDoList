@@ -24,16 +24,24 @@
     taskCategory *freeTime = [[taskCategory alloc] initWithTitle:@"Free Time"];
     taskCategory *work = [[taskCategory alloc] initWithTitle:@"Work"];
     taskCategory *social = [[taskCategory alloc] initWithTitle:@"Social"];
-
+    
+    taskType *startTask = [[taskType alloc] initWithName:@"start"];
+    taskType *continueTask = [[taskType alloc] initWithName:@"continue"];
+    taskType *finishTask = [[taskType alloc] initWithName:@"finish"];
+    taskType *reminderTask = [[taskType alloc] initWithName:@"reminder"];
+ 
+    
     self.dataStore = [TasksDataStore sharedTasksDataStore];
-    
-    self.dataStore.categoriesList = [NSMutableArray arrayWithObjects:chores, freeTime, work, social, nil];
+    self.tasksOfACertainType = [[NSMutableArray alloc] init];
 
-    Task *task1 = [[Task alloc] initWithName:@"clean stuff" category:chores];
-    Task *task2 = [[Task alloc] initWithName:@"clean more stuff" category:freeTime];
-    
+
+    Task *task1 = [[Task alloc] initWithName:@"clean stuff" category:chores type:continueTask];
+    Task *task2 = [[Task alloc] initWithName:@"play guitar" category:freeTime type:reminderTask];
+    Task *task3 = [[Task alloc] initWithName:@"cookin in the kitchen" category:freeTime type:startTask];
+     Task *task4 = [[Task alloc] initWithName:@"chillin with the homies" category:freeTime type:startTask];
+
    
-    self.dataStore.tasksList = [NSMutableArray arrayWithObjects:task1, task2, nil];
+    self.dataStore.tasksList = [NSMutableArray arrayWithObjects:task3, task2, task1, task4, nil];
     
     
 }
@@ -48,32 +56,83 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return self.dataStore.categoriesList.count;
+    
+    
+    for (Task *task in self.dataStore.tasksList) {
+        if (![self.tasksOfACertainType containsObject:task.type.name] ) {
+            [self.tasksOfACertainType addObject:task.type.name];
+        }
+        
+    }
+    
+    return self.tasksOfACertainType.count;
 }
 
+
+
+
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return self.dataStore.tasksList.count;
+    
+    
+    
+    
+    
+    NSMutableArray *reusableTasksOfACerTainType = [[NSMutableArray alloc] init];
+
+    for (Task *task in self.dataStore.tasksList) {
+        
+        if ([task.type.name isEqualToString:self.tasksOfACertainType[section]]) {
+            [reusableTasksOfACerTainType addObject:task];
+        }
+    }
+
+    return reusableTasksOfACerTainType.count;
 }
+
+
+
+
+
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"taskCell" forIndexPath:indexPath];
+   
+
+    NSMutableArray *reusableTasks = [[NSMutableArray alloc] init];
     
-    cell.textLabel.text = [self.dataStore.tasksList[indexPath.row] name];
     
+    
+    for (Task *task in self.dataStore.tasksList) {
+        
+        if ([task.type.name isEqualToString:self.tasksOfACertainType[indexPath.section]]) {
+            [reusableTasks addObject:task.name];
+        }
+    }
+    
+    cell.textLabel.text = reusableTasks[indexPath.row];
+
+
     return cell;
 }
 
 
+
+
+
+
+
+
+
+
 -(NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 
-    taskCategory *category = self.dataStore.categoriesList[section];
     
-    return category.title;
+    return self.tasksOfACertainType[section];
     
 }
 

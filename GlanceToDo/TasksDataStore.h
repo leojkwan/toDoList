@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "Task.h"
-
+#import "taskType.h"
+#import "taskCategory.h"
 @interface TasksDataStore : NSObject
 
 + (instancetype)sharedTasksDataStore;
 
 @property (nonatomic, strong) NSMutableArray *tasksList;
-@property (nonatomic, strong) NSMutableArray *categoriesList;
 
 @end
