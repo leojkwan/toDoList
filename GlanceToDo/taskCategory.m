@@ -6,9 +6,11 @@
 //  Copyright (c) 2015 Leo Kwan. All rights reserved.
 //
 
-#import "TaskCategory.h"
+#import "taskCategory.h"
 
-@implementation TaskCategory
+@implementation taskCategory
+
+
 
 -(instancetype) initWithTitle:(NSString *)title {
     self = [super init];

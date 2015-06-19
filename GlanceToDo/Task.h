@@ -7,13 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TaskCategory.h"
+#import "taskCategory.h"
 
 @interface Task : NSObject
 
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) TaskCategory *category;
+@property (nonatomic, strong) taskCategory *category;
 
--(instancetype) initWithName:(NSString *)name category:(TaskCategory *) category;
+-(instancetype) initWithName:(NSString *)name category:(taskCategory *) category;
 
 @end

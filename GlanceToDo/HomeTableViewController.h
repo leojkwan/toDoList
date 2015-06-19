@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "Task.h"
-#import "TaskCategory.h" 
+#import "taskCategory.h" 
 #import "TasksDataStore.h"
 
 
 @interface HomeTableViewController : UITableViewController
 
-@property (nonatomic, strong) NSMutableArray *tasks;
+//@property (nonatomic, strong) NSMutableArray *tasksArray;
 @property (nonatomic, strong) TasksDataStore *dataStore;
+//@property (nonatomic, strong) NSMutableArray *categoriesArray;
 
 @end

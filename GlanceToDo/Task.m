@@ -10,7 +10,7 @@
 
 @implementation Task
 
--(instancetype) initWithName:(NSString *)name category:(TaskCategory *)category {
+-(instancetype) initWithName:(NSString *)name category:(taskCategory *)category {
 
     self = [super init];
     
@@ -22,7 +22,7 @@
 }
 
 -(instancetype) init {
-    self = [self initWithName:@"" category:[[TaskCategory alloc] initWithTitle:@""]];
+    self = [self initWithName:@"" category:[[taskCategory alloc] initWithTitle:@""]];
     return self;
 }
 

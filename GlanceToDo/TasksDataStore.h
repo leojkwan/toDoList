@@ -14,5 +14,6 @@
 + (instancetype)sharedTasksDataStore;
 
 @property (nonatomic, strong) NSMutableArray *tasksList;
+@property (nonatomic, strong) NSMutableArray *categoriesList;
 
 @end

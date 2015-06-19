@@ -25,6 +25,7 @@
     
     if (self) {
         _tasksList = [[NSMutableArray alloc] init];
+        _categoriesList = [[NSMutableArray alloc] init];
     }
     return self;
 }

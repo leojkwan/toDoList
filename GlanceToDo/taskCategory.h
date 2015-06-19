@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TaskCategory : NSObject
+@interface taskCategory : NSObject
 
 
 @property (nonatomic, strong) NSString *title;

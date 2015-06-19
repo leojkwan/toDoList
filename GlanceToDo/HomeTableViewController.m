@@ -18,13 +18,22 @@
     
     
     [super viewDidLoad];
-    self.tasks = [[NSMutableArray alloc] init];
+    
+    
+    taskCategory *chores = [[taskCategory alloc] initWithTitle:@"Chores"];
+    taskCategory *freeTime = [[taskCategory alloc] initWithTitle:@"Free Time"];
+    taskCategory *work = [[taskCategory alloc] initWithTitle:@"Work"];
+    taskCategory *social = [[taskCategory alloc] initWithTitle:@"Social"];
+
     self.dataStore = [TasksDataStore sharedTasksDataStore];
-    TaskCategory *chores = [[TaskCategory alloc] initWithTitle:@"Chores"];
-    Task *task1 = [[Task alloc] initWithName:@"Do Laundry" category:chores];
     
-    [self.tasks addObject:task1];
+    self.dataStore.categoriesList = [NSMutableArray arrayWithObjects:chores, freeTime, work, social, nil];
+
+    Task *task1 = [[Task alloc] initWithName:@"clean stuff" category:chores];
+    Task *task2 = [[Task alloc] initWithName:@"clean more stuff" category:freeTime];
     
+   
+    self.dataStore.tasksList = [NSMutableArray arrayWithObjects:task1, task2, nil];
     
     
 }
@@ -39,13 +48,13 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 1;
+    return self.dataStore.categoriesList.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return self.tasks.count;
+    return self.dataStore.tasksList.count;
 }
 
 
@@ -54,9 +63,18 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"taskCell" forIndexPath:indexPath];
     
-    cell.textLabel.text = [self.tasks[indexPath.row] name];
+    cell.textLabel.text = [self.dataStore.tasksList[indexPath.row] name];
     
     return cell;
+}
+
+
+-(NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+
+    taskCategory *category = self.dataStore.categoriesList[section];
+    
+    return category.title;
+    
 }
 
 
