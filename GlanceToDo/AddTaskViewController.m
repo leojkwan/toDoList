@@ -7,21 +7,31 @@
 //
 
 #import "AddTaskViewController.h"
+#import <UIKit/UIKit.h>
 
 @interface AddTaskViewController ()
-
+@property (weak, nonatomic) IBOutlet UITextField *addTaskTextField;
+@property (weak, nonatomic) IBOutlet UIButton *addTaskButton;
 @end
 
 @implementation AddTaskViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void) hideAddButton {
+    if ([self.addTaskTextField.text  isEqualToString:@""]) {
+//        self.addTaskButton.isHidden = NO;
+    }
+}
+- (IBAction)addTaskButtonPressed:(id)sender {
 }
 
 /*
