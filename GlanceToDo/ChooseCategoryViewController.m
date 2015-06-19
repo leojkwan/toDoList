@@ -30,7 +30,20 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-
+    AddTaskViewController *destinationVC = segue.destinationViewController;
+    if ([segue.identifier isEqualToString:@"choresSegue"]){
+        destinationVC.passedCategoryName = @"Chores";
+        NSLog(@"Passing Chores string");
+    } else if ([segue.identifier isEqualToString:@"freeTimeSegue"]){
+        destinationVC.passedCategoryName = @"Free Time";
+        NSLog(@"Passing Free Time string");
+    } else if ([segue.identifier isEqualToString:@"workSegue"]){
+        destinationVC.passedCategoryName = @"Work";
+        NSLog(@"Passing Work string");
+    } else if ([segue.identifier isEqualToString:@"socialSegue"]){
+        destinationVC.passedCategoryName = @"Social";
+        NSLog(@"Passing Social string");
+    }
 
 }
 

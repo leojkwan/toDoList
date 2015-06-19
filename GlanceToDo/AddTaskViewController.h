@@ -11,4 +11,8 @@
 
 @interface AddTaskViewController : UIViewController
 
+
+@property (nonatomic, strong) NSString *passedCategoryName;
+
+
 @end
