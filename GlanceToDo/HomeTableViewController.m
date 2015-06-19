@@ -15,9 +15,11 @@
 @implementation HomeTableViewController
 
 - (void)viewDidLoad {
+    
+    
     [super viewDidLoad];
     self.tasks = [[NSMutableArray alloc] init];
-    
+    self.dataStore = [TasksDataStore sharedTasksDataStore];
     TaskCategory *chores = [[TaskCategory alloc] initWithTitle:@"Chores"];
     Task *task1 = [[Task alloc] initWithName:@"Do Laundry" category:chores];
     
