@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#
+
 
 @interface AddTaskViewController : UIViewController
 
 
 @property (nonatomic, strong) NSString *passedCategoryName;
-
+@property (nonatomic, strong) NSString *passedTypeName;
 
 @end
