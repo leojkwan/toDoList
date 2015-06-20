@@ -102,6 +102,7 @@
 		942BD2781B332FB0003F2348 /* GlanceToDo */ = {
 			isa = PBXGroup;
 			children = (
+				94D1ECAC1B3604D200011683 /* Data Stores */,
 				949584621B3476310066E07C /* Models */,
 				949584631B34763E0066E07C /* View Controllers */,
 				942BD2791B332FB0003F2348 /* Supporting Files */,
@@ -144,8 +145,6 @@
 		949584621B3476310066E07C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				94FBFA181B339FD500ADC887 /* TasksDataStore.h */,
-				94FBFA191B339FD500ADC887 /* TasksDataStore.m */,
 				942BD2A81B333A8E003F2348 /* Task.h */,
 				942BD2A91B333A8E003F2348 /* Task.m */,
 				942BD2AB1B333AA4003F2348 /* taskCategory.h */,
@@ -168,6 +167,15 @@
 				942BD2A61B333A22003F2348 /* AddTaskViewController.m */,
 			);
 			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		94D1ECAC1B3604D200011683 /* Data Stores */ = {
+			isa = PBXGroup;
+			children = (
+				94FBFA181B339FD500ADC887 /* TasksDataStore.h */,
+				94FBFA191B339FD500ADC887 /* TasksDataStore.m */,
+			);
+			name = "Data Stores";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

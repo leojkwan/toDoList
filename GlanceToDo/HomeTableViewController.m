@@ -30,18 +30,22 @@
     taskType *finishTask = [[taskType alloc] initWithName:@"Finish"];
     taskType *reminderTask = [[taskType alloc] initWithName:@"Reminder"];
  
+ 
     
     self.dataStore = [TasksDataStore sharedTasksDataStore];
+    
     self.tasksOfACertainType = [[NSMutableArray alloc] init];
-
+    
+    
+//    Task *task1 = [[Task alloc] initWithName:@"s1" category:chores type:startTask];
+//    Task *task2 = [[Task alloc] initWithName:@"s2" category:chores type:startTask];
+//    Task *task3 = [[Task alloc] initWithName:@"c1" category:chores type:continueTask];
+//    Task *task4 = [[Task alloc] initWithName:@"c2" category:chores type:continueTask];
 //
-//    Task *task1 = [[Task alloc] initWithName:@"clean stuff" category:chores type:continueTask];
-//    Task *task2 = [[Task alloc] initWithName:@"play guitar" category:freeTime type:reminderTask];
-//    Task *task3 = [[Task alloc] initWithName:@"cookin in the kitchen" category:freeTime type:startTask];
-//     Task *task4 = [[Task alloc] initWithName:@"eating with the homies" category:freeTime type:startTask];
-//    Task *task5 = [[Task alloc] initWithName:@"chillin with the homies" category:work type:finishTask];
-   
-//    self.dataStore.tasksList = [NSMutableArray     
+//    
+//    self.dataStore.tasksList = @[task1,task2,task3, task4];
+    
+
     
 }
 
@@ -50,24 +54,55 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+#pragma mark - Cells
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        [self.dataStore.tasksList removeObjectAtIndex:indexPath.row];
+
+        
+        [self.tableView reloadData]; // tell table to refresh now
+        
+        NSLog(@"%@", self.dataStore.tasksList);
+    }
+}
+
+
+-(NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    
+
+//    if (reusableTasks.count == 0) {
+//        [self tableView:tableView titleForHeaderInSection:indexPath.section];
+//        return nil;
+//    }
+    
+    
+    return self.tasksOfACertainType[section];
+}
+
+
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     
-    
+
     for (Task *task in self.dataStore.tasksList) {
         if (![self.tasksOfACertainType containsObject:task.type.name] ) {
             [self.tasksOfACertainType addObject:task.type.name];
         }
         
     }
-    
     return self.tasksOfACertainType.count;
 }
-
-
 
 
 
@@ -92,10 +127,6 @@
 
 
 
-
-
-
-
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -104,7 +135,7 @@
 
     NSMutableArray *reusableTasks = [[NSMutableArray alloc] init];
     
-    
+
     
     for (Task *task in self.dataStore.tasksList) {
         
@@ -112,6 +143,7 @@
             [reusableTasks addObject:task.name];
         }
     }
+    
     
     cell.textLabel.text = reusableTasks[indexPath.row];
 
@@ -121,15 +153,12 @@
 
 
 
--(NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return self.tasksOfACertainType[section];
-}
+
 
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.tableView reloadData];
-    
 }
 
 
