@@ -39,6 +39,20 @@
 }
 
 
+- (IBAction)saveButtonPressed:(id)sender {
+
+    Task *newTaskCreated = [[Task alloc] initWithName:self.taskTextField.text category:self.passedCategoryName type:self.passedTypeName];
+    
+    [[TasksDataStore sharedTasksDataStore].tasksList addObject:newTaskCreated];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+
+
+
+
+
 -(void) hideKeyboardOnTouch {
     UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismissKeyboard)];
     tapGesture.cancelsTouchesInView = NO;

@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-
+#import "Task.h"
+#import "TasksDataStore.h"
 @interface AddTaskViewController : UIViewController
 
 

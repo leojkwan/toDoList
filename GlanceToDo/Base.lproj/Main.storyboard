@@ -219,7 +219,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="T7t-Z4-EDW">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="rZE-hW-P6M"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="rZE-hW-P6M">
+                            <connections>
+                                <action selector="saveButtonPressed:" destination="F9v-eh-SC7" id="5jx-8w-ViK"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="continueButton" destination="GBD-eE-o04" id="IiL-tQ-21c"/>
@@ -258,6 +262,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="aBA-Yb-D4L"/>
+        <segue reference="vNH-tc-BN1"/>
     </inferredMetricsTieBreakers>
 </document>
