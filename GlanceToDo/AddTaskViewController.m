@@ -12,6 +12,17 @@
 @interface AddTaskViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *addTaskTextField;
 @property (weak, nonatomic) IBOutlet UIButton *addTaskButton;
+@property (weak, nonatomic) IBOutlet UIButton *startButton;
+@property (weak, nonatomic) IBOutlet UIButton *continueButton;
+@property (weak, nonatomic) IBOutlet UIButton *finishButton;
+@property (weak, nonatomic) IBOutlet UIButton *reminderButton;
+@property (nonatomic, strong) UITapGestureRecognizer *tap;
+
+
+-(void) toggleOtherButtonColorsOffExcept:(UIButton*)button;
+-(void) toggleKeyboardAndColor:(id)sender;
+
+
 @end
 
 @implementation AddTaskViewController
@@ -19,6 +30,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.addTaskButton setHidden:YES];
+    [self.addTaskTextField setEnabled:NO];
+    
+    UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismissKeyboard)];
+    tapGesture.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:tapGesture];
+    
+    
+//    if (keyb) {
+//        <#statements#>
+//    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -27,31 +49,60 @@
 }
 
 - (IBAction)startButtonPressed:(id)sender {
-//    self.passedTypeName = @"Start
-}
+    self.passedTypeName = @"Start";
+    [self toggleKeyboardAndColor:sender];
 
-- (IBAction)beginButtonPressed:(id)sender {
 }
 
 - (IBAction)continueButtonPressed:(id)sender {
+    self.passedTypeName = @"Continue";
+    [self toggleKeyboardAndColor:sender];
+
 }
 
-- (IBAction)rememberButtonPressed:(id)sender {
+- (IBAction)finishButtonPressed:(id)sender {
+    self.passedTypeName = @"Finish";
+    [self toggleKeyboardAndColor:sender];
 }
 
-
-
+- (IBAction)reminderButttonPressed:(id)sender {
+    self.passedTypeName = @"Reminder";
+    [self toggleKeyboardAndColor:sender];
+}
 
 
 - (IBAction)addTaskButtonPressed:(id)sender {
-    
-    
 }
-//
-//-(void) isHidden {
-//    
-//    [self is
-//}
+
+
+
+
+
+
+-(void) toggleKeyboardAndColor:(id)sender {
+    [self toggleOtherButtonColorsOffExcept:sender];
+    [self.addTaskTextField setEnabled:YES];
+    [self.addTaskTextField becomeFirstResponder];
+}
+
+
+
+
+-(void)dismissKeyboard {
+    [self.addTaskTextField resignFirstResponder];
+}
+
+
+-(void) toggleOtherButtonColorsOffExcept:(UIButton*)button {
+    
+    self.startButton.backgroundColor = [UIColor grayColor];
+    self.continueButton.backgroundColor = [UIColor grayColor];
+    self.finishButton.backgroundColor = [UIColor grayColor];
+    self.reminderButton.backgroundColor = [UIColor grayColor];
+    
+    button.backgroundColor =  [UIColor greenColor];
+}
+
 
 /*
 #pragma mark - Navigation
