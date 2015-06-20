@@ -18,7 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self.addTaskButton setHidden:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -26,15 +26,32 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void) hideAddButton {
-    if ([self.addTaskTextField.text  isEqualToString:@""]) {
-//        self.addTaskButton.isHidden = NO;
-    }
+- (IBAction)startButtonPressed:(id)sender {
+//    self.passedTypeName = @"Start
 }
+
+- (IBAction)beginButtonPressed:(id)sender {
+}
+
+- (IBAction)continueButtonPressed:(id)sender {
+}
+
+- (IBAction)rememberButtonPressed:(id)sender {
+}
+
+
+
+
+
 - (IBAction)addTaskButtonPressed:(id)sender {
     
     
 }
+//
+//-(void) isHidden {
+//    
+//    [self is
+//}
 
 /*
 #pragma mark - Navigation

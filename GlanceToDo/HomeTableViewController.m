@@ -25,10 +25,10 @@
     taskCategory *work = [[taskCategory alloc] initWithTitle:@"Work"];
     taskCategory *social = [[taskCategory alloc] initWithTitle:@"Social"];
     
-    taskType *startTask = [[taskType alloc] initWithName:@"start"];
-    taskType *continueTask = [[taskType alloc] initWithName:@"continue"];
-    taskType *finishTask = [[taskType alloc] initWithName:@"finish"];
-    taskType *reminderTask = [[taskType alloc] initWithName:@"reminder"];
+    taskType *startTask = [[taskType alloc] initWithName:@"Start"];
+    taskType *continueTask = [[taskType alloc] initWithName:@"Continue"];
+    taskType *finishTask = [[taskType alloc] initWithName:@"Finish"];
+    taskType *reminderTask = [[taskType alloc] initWithName:@"Reminder"];
  
     
     self.dataStore = [TasksDataStore sharedTasksDataStore];
@@ -44,7 +44,7 @@
     self.dataStore.tasksList = [NSMutableArray arrayWithObjects:task3, task2, task1, task4, nil];
     
     
-}
+}       
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
