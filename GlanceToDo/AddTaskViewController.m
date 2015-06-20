@@ -35,7 +35,7 @@
     [self hideKeyboardOnTouch];
     [self.view setNeedsDisplay];
     [self setButtonProperties];
-    
+
 }
 
 
