@@ -31,16 +31,16 @@
     [super viewDidLoad];
     [self.addTaskButton setHidden:YES];
     [self.addTaskTextField setEnabled:NO];
+    [self.addTaskTextField setDelegate:self];
+    
+
+    
     
     UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismissKeyboard)];
     tapGesture.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tapGesture];
     
-    
-//    if (keyb) {
-//        <#statements#>
-//    }
-    
+        
 }
 
 - (void)didReceiveMemoryWarning {
@@ -103,6 +103,12 @@
     button.backgroundColor =  [UIColor greenColor];
 }
 
+
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    return YES;
+}
 
 /*
 #pragma mark - Navigation
