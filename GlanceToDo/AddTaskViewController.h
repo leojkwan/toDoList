@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "Task.h"
 #import "TasksDataStore.h"
+#import "HomeTableViewController.h"
+
+
 @interface AddTaskViewController : UIViewController
 
 
-@property (nonatomic, strong) NSString *passedCategoryName;
-@property (nonatomic, strong) NSString *passedTypeName;
+@property (nonatomic, strong) taskCategory *passedCategoryName;
+@property (nonatomic, strong) taskType *passedTypeName;
 
 @end

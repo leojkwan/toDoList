@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *taskTextField;
 
 
+
 -(void) toggleOtherButtonColorsOffExcept:(UIButton*)button;
 -(void) toggleKeyboardAndColor:(id)sender;
 -(void) hideKeyboardOnTouch;
@@ -44,7 +45,12 @@
     Task *newTaskCreated = [[Task alloc] initWithName:self.taskTextField.text category:self.passedCategoryName type:self.passedTypeName];
     
     [[TasksDataStore sharedTasksDataStore].tasksList addObject:newTaskCreated];
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    NSArray* array = [self.navigationController viewControllers];
+    
+
+    
+    [self.navigationController popToViewController:[array objectAtIndex:0] animated:YES];
 }
 
 
@@ -73,25 +79,31 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
 - (IBAction)startButtonPressed:(id)sender {
-    self.passedTypeName = @"Start";
+    taskType *startTask = [[taskType alloc] initWithName:@"Start"];
+    self.passedTypeName = startTask;
     [self toggleKeyboardAndColor:sender];
 
 }
 
 - (IBAction)continueButtonPressed:(id)sender {
-    self.passedTypeName = @"Continue";
+    taskType *continueTask = [[taskType alloc] initWithName:@"Continue"];
+    self.passedTypeName = continueTask;
     [self toggleKeyboardAndColor:sender];
 
 }
 
 - (IBAction)finishButtonPressed:(id)sender {
-    self.passedTypeName = @"Finish";
+    taskType *finishTask = [[taskType alloc] initWithName:@"Finish"];
+    self.passedTypeName = finishTask;
     [self toggleKeyboardAndColor:sender];
 }
 
 - (IBAction)reminderButttonPressed:(id)sender {
-    self.passedTypeName = @"Reminder";
+    taskType *reminderTask = [[taskType alloc] initWithName:@"Reminder"];
+    self.passedTypeName = reminderTask;
     [self toggleKeyboardAndColor:sender];
 }
 

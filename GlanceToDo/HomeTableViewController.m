@@ -38,7 +38,7 @@
     Task *task1 = [[Task alloc] initWithName:@"clean stuff" category:chores type:continueTask];
     Task *task2 = [[Task alloc] initWithName:@"play guitar" category:freeTime type:reminderTask];
     Task *task3 = [[Task alloc] initWithName:@"cookin in the kitchen" category:freeTime type:startTask];
-     Task *task4 = [[Task alloc] initWithName:@"chi llin with the homies" category:freeTime type:startTask];
+     Task *task4 = [[Task alloc] initWithName:@"eating with the homies" category:freeTime type:startTask];
     Task *task5 = [[Task alloc] initWithName:@"chillin with the homies" category:work type:finishTask];
    
     self.dataStore.tasksList = [NSMutableArray arrayWithObjects:task3, task2, task1, task4, task5, nil];
@@ -122,17 +122,14 @@
 
 
 
-
-
-
-
-
-
-
 -(NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-
-    
     return self.tasksOfACertainType[section];
+}
+
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
     
 }
 

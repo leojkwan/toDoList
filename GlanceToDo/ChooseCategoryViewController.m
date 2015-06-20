@@ -31,17 +31,23 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     AddTaskViewController *destinationVC = segue.destinationViewController;
+    
+    taskCategory *chores = [[taskCategory alloc] initWithTitle:@"Chores"];
+    taskCategory *freeTime = [[taskCategory alloc] initWithTitle:@"Free Time"];
+    taskCategory *work = [[taskCategory alloc] initWithTitle:@"Work"];
+    taskCategory *social = [[taskCategory alloc] initWithTitle:@"Social"];
+
     if ([segue.identifier isEqualToString:@"choresSegue"]){
-        destinationVC.passedCategoryName = @"Chores";
+        destinationVC.passedCategoryName = chores;
         NSLog(@"Passing Chores string");
     } else if ([segue.identifier isEqualToString:@"freeTimeSegue"]){
-        destinationVC.passedCategoryName = @"Free Time";
+        destinationVC.passedCategoryName = freeTime;
         NSLog(@"Passing Free Time string");
     } else if ([segue.identifier isEqualToString:@"workSegue"]){
-        destinationVC.passedCategoryName = @"Work";
+        destinationVC.passedCategoryName = work;
         NSLog(@"Passing Work string");
     } else if ([segue.identifier isEqualToString:@"socialSegue"]){
-        destinationVC.passedCategoryName = @"Social";
+        destinationVC.passedCategoryName = social;
         NSLog(@"Passing Social string");
     }
 
