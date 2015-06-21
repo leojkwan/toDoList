@@ -10,18 +10,37 @@
 
 @interface ChooseCategoryViewController ()
 
+@property (weak, nonatomic) IBOutlet UIButton *freeTimeButton;
+@property (weak, nonatomic) IBOutlet UIButton *choresButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *workButton;
+@property (weak, nonatomic) IBOutlet UIButton *socialButton;
+
+
+
+
+
 @end
 
 @implementation ChooseCategoryViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self setButtonProperties];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+
+-(void) setButtonProperties {
+    self.freeTimeButton.layer.cornerRadius = 10;
+    self.choresButton.layer.cornerRadius = 10;
+    self.workButton.layer.cornerRadius = 10;
+    self.socialButton.layer.cornerRadius = 10;
 }
 
 
