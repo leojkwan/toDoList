@@ -20,21 +20,20 @@
     [super viewDidLoad];
     
     
-    taskCategory *chores = [[taskCategory alloc] initWithTitle:@"Chores"];
-    taskCategory *freeTime = [[taskCategory alloc] initWithTitle:@"Free Time"];
-    taskCategory *work = [[taskCategory alloc] initWithTitle:@"Work"];
-    taskCategory *social = [[taskCategory alloc] initWithTitle:@"Social"];
-    
-    taskType *startTask = [[taskType alloc] initWithName:@"Start"]; 
-    taskType *continueTask = [[taskType alloc] initWithName:@"Continue"];
-    taskType *finishTask = [[taskType alloc] initWithName:@"Finish"];
-    taskType *reminderTask = [[taskType alloc] initWithName:@"Reminder"];
+//    taskCategory *chores = [[taskCategory alloc] initWithTitle:@"Chores"];
+//    taskCategory *freeTime = [[taskCategory alloc] initWithTitle:@"Free Time"];
+//    taskCategory *work = [[taskCategory alloc] initWithTitle:@"Work"];
+//    taskCategory *social = [[taskCategory alloc] initWithTitle:@"Social"];
+//    
+//    taskType *startTask = [[taskType alloc] initWithName:@"Start"]; 
+//    taskType *continueTask = [[taskType alloc] initWithName:@"Continue"];
+//    taskType *finishTask = [[taskType alloc] initWithName:@"Finish"];
+//    taskType *reminderTask = [[taskType alloc] initWithName:@"Reminder"];
  
  
     
     self.dataStore = [TasksDataStore sharedTasksDataStore];
     
-    self.tasksOfACertainType = [[NSMutableArray alloc] init];
     
     
 //    Task *task1 = [[Task alloc] initWithName:@"s1" category:chores type:startTask];
@@ -65,26 +64,23 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         
-        [self.dataStore.tasksList removeObjectAtIndex:indexPath.row];
+        [self.dataStore.listOfSections[indexPath.section] removeObjectAtIndex:indexPath.row];
 
         
         [self.tableView reloadData]; // tell table to refresh now
         
-        NSLog(@"%@", self.dataStore.tasksList);
+        NSLog(@"%@", self.dataStore.listOfSections);
     }
 }
 
 
 -(NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     
-
-//    if (reusableTasks.count == 0) {
-//        [self tableView:tableView titleForHeaderInSection:indexPath.section];
-//        return nil;
-//    }
-    
-    
-    return self.tasksOfACertainType[section];
+    if ([self.dataStore.listOfSections[section] count] != 0) {
+        taskType *typeAtThisIndex = [self.dataStore.listOfSections[section][0] typeObject];
+        return [typeAtThisIndex name];
+    }
+    return nil;
 }
 
 
@@ -94,35 +90,34 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
     
-
-    for (Task *task in self.dataStore.tasksList) {
-        if (![self.tasksOfACertainType containsObject:task.type.name] ) {
-            [self.tasksOfACertainType addObject:task.type.name];
+    NSInteger numberOfFilledSections = 0;
+    
+    for (taskType *tasksOfACertainType in self.dataStore.listOfSections) {
+        if (tasksOfACertainType > 0) {
+            numberOfFilledSections++;
         }
-        
     }
-    return self.tasksOfACertainType.count;
-}
+    return self.dataStore.listOfSections.count;
+    }
 
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     
-    
-    
-    
-    
-    NSMutableArray *reusableTasksOfACerTainType = [[NSMutableArray alloc] init];
+//    NSMutableArray *reusableTasksOfACerTainType = [[NSMutableArray alloc] init];
 
-    for (Task *task in self.dataStore.tasksList) {
-        
-        if ([task.type.name isEqualToString:self.tasksOfACertainType[section]]) {
-            [reusableTasksOfACerTainType addObject:task];
-        }
-    }
-
-    return reusableTasksOfACerTainType.count;
+//    for (NSInteger i = 0; i < [self.dataStore.listOfSections count]; i++) {
+//        return [self.dataStore.listOfSections[section] count];
+//        }
+//
+//        if ([type.name isEqualToString:self.tasksOfACertainType[section]]) {
+//            [reusableTasksOfACerTainType addObject:task];
+//        }
+//    }
+//
+//    return reusableTasksOfACerTainType.count;
+    return [self.dataStore.listOfSections[section] count];
 }
 
 
@@ -133,19 +128,22 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"taskCell" forIndexPath:indexPath];
    
 
-    NSMutableArray *reusableTasks = [[NSMutableArray alloc] init];
+//    NSMutableArray *reusableTasks = [[NSMutableArray alloc] init];
+//    
+//
+//    
+//    for (NSMutableArray *tasksOfACertainType  in self.dataStore.listOfSections) {
+//        
+//        for (NSInteger i = 0; i < tasksOfACertainType.count; i++) {
+            cell.textLabel.text = [self.dataStore.listOfSections[indexPath.section][indexPath.row] name];
+//        }
     
-
-    
-    for (Task *task in self.dataStore.tasksList) {
-        
-        if ([task.type.name isEqualToString:self.tasksOfACertainType[indexPath.section]]) {
-            [reusableTasks addObject:task.name];
-        }
-    }
+//        if ([task.type.name isEqualToString:self.tasksOfACertainType[indexPath.section]]) {
+//            [reusableTasks addObject:task.name];
+//        }
+//    }
     
     
-    cell.textLabel.text = reusableTasks[indexPath.row];
 
 
     return cell;

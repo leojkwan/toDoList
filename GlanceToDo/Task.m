@@ -15,8 +15,8 @@
     
     if (self) {
         _name = name;
-        _category = category;
-        _type = type;
+        _categoryObject = category;
+        _typeObject = type;
     }
     
     return self;

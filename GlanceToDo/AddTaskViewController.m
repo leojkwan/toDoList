@@ -30,6 +30,7 @@
 @implementation AddTaskViewController
 
 - (void)viewDidLoad {
+    self.dataStore = [TasksDataStore sharedTasksDataStore];
     [super viewDidLoad];
     [self.taskTextField setEditable:NO];
     [self.taskTextField setDelegate:self];
@@ -44,13 +45,21 @@
 
     Task *newTaskCreated = [[Task alloc] initWithName:self.taskTextField.text category:self.passedCategoryName type:self.passedTypeName];
     
-    [[TasksDataStore sharedTasksDataStore].tasksList addObject:newTaskCreated];
+    if (self.passedTypeName == self.dataStore.startTask) {
+        [[TasksDataStore sharedTasksDataStore].startList   addObject:newTaskCreated];
+        
+    } else if (self.passedTypeName == self.dataStore.continueTask) {
+        [[TasksDataStore sharedTasksDataStore].continueList   addObject:newTaskCreated];
+        
+    }  else if (self.passedTypeName == self.dataStore.finishTask) {
+        [[TasksDataStore sharedTasksDataStore].finishList   addObject:newTaskCreated];
+        
+    }  else if (self.passedTypeName == self.dataStore.reminderTask) {
+        [[TasksDataStore sharedTasksDataStore].reminderList   addObject:newTaskCreated];
+    }
     
-    NSArray* array = [self.navigationController viewControllers];
-    
-
-    
-    [self.navigationController popToViewController:[array objectAtIndex:0] animated:YES];
+        NSArray* array = [self.navigationController viewControllers]; // these next two lines pop us back 2 view controllers instead if one.
+        [self.navigationController popToViewController:[array objectAtIndex:0] animated:YES];
 }
 
 
@@ -81,29 +90,28 @@
 
 
 
+
+
+
 - (IBAction)startButtonPressed:(id)sender {
-    taskType *startTask = [[taskType alloc] initWithName:@"Start"];
-    self.passedTypeName = startTask;
+    self.passedTypeName = self.dataStore.startTask;
     [self toggleKeyboardAndColor:sender];
 
 }
 
 - (IBAction)continueButtonPressed:(id)sender {
-    taskType *continueTask = [[taskType alloc] initWithName:@"Continue"];
-    self.passedTypeName = continueTask;
+    self.passedTypeName = self.dataStore.continueTask;
     [self toggleKeyboardAndColor:sender];
 
 }
 
 - (IBAction)finishButtonPressed:(id)sender {
-    taskType *finishTask = [[taskType alloc] initWithName:@"Finish"];
-    self.passedTypeName = finishTask;
+    self.passedTypeName = self.dataStore.finishTask;
     [self toggleKeyboardAndColor:sender];
 }
 
 - (IBAction)reminderButttonPressed:(id)sender {
-    taskType *reminderTask = [[taskType alloc] initWithName:@"Reminder"];
-    self.passedTypeName = reminderTask;
+    self.passedTypeName = self.dataStore.reminderTask;
     [self toggleKeyboardAndColor:sender];
 }
 

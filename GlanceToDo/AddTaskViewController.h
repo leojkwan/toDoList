@@ -17,5 +17,6 @@
 
 @property (nonatomic, strong) taskCategory *passedCategoryName;
 @property (nonatomic, strong) taskType *passedTypeName;
+@property (nonatomic, strong) TasksDataStore *dataStore;
 
 @end

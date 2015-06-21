@@ -58,16 +58,16 @@
 
     if ([segue.identifier isEqualToString:@"choresSegue"]){
         destinationVC.passedCategoryName = chores;
-        NSLog(@"Passing Chores string");
+        NSLog(@"Passing Chores object");
     } else if ([segue.identifier isEqualToString:@"freeTimeSegue"]){
         destinationVC.passedCategoryName = freeTime;
-        NSLog(@"Passing Free Time string");
+        NSLog(@"Passing Free Time object");
     } else if ([segue.identifier isEqualToString:@"workSegue"]){
         destinationVC.passedCategoryName = work;
-        NSLog(@"Passing Work string");
+        NSLog(@"Passing Work object");
     } else if ([segue.identifier isEqualToString:@"socialSegue"]){
         destinationVC.passedCategoryName = social;
-        NSLog(@"Passing Social string");
+        NSLog(@"Passing Social object");
     }
 
 }
