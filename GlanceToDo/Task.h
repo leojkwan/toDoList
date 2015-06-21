@@ -14,8 +14,8 @@
 @interface Task : NSObject
 
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) taskCategory *category;
-@property (nonatomic, strong) taskType *type;
+@property (nonatomic, strong) taskCategory *categoryObject;
+@property (nonatomic, strong) taskType *typeObject;
 
 -(instancetype) initWithName:(NSString *)name category:(taskCategory *)category type:(taskType *)type;
 
