@@ -25,7 +25,7 @@
 -(void) toggleKeyboardAndColor:(id)sender;
 -(void) hideKeyboardOnTouch;
 -(void) setButtonProperties;
--(void) hideAndShowObjectsOnPress:(id)sender;
+//-(void) hideAndShowObjectsOnPress:(id)sender;
 
 
 
@@ -72,10 +72,10 @@
         [[TasksDataStore sharedTasksDataStore].reminderList   addObject:newTaskCreated];
     }
     
-    
+    [self vibratePhone];
     [self taskAddedNotificationOfCategory];
-        NSArray* array = [self.navigationController viewControllers]; // these next two lines pop us back 2 view controllers instead if one.
-        [self.navigationController popToViewController:[array objectAtIndex:0] animated:YES];
+    
+    [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:0] animated:YES];
 }
 
 
@@ -121,6 +121,20 @@
     [self toggleKeyboardAndColor:sender];
     self.taskTextField.hidden = NO;
     self.promptLabel.hidden = YES;
+}
+
+- (void)vibratePhone;
+{
+    if([[UIDevice currentDevice].model isEqualToString:@"iPhone"])
+    {
+        AudioServicesPlaySystemSound (1352); //works ALWAYS as of this post
+    }
+    else
+    {
+        // Not an iPhone, so doesn't have vibrate
+        // play the less annoying tick noise or one of your own
+        AudioServicesPlayAlertSound (1105);
+    }
 }
 
 
@@ -177,6 +191,10 @@
     [textField resignFirstResponder];
     return YES;
 }
+
+
+
+
 
 //- (void)didReceiveMemoryWarning {
 //    [super didReceiveMemoryWarning];

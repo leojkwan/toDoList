@@ -47,7 +47,7 @@
             </objects>
             <point key="canvasLocation" x="784.5" y="434.5"/>
         </scene>
-        <!--Add Task-->
+        <!--Task Category-->
         <scene sceneID="k2D-DZ-g23">
             <objects>
                 <viewController id="5t8-le-cYp" customClass="ChooseCategoryViewController" sceneMemberID="viewController">
@@ -136,7 +136,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="fZU-Hq-s67" secondAttribute="trailing" constant="20" id="kyD-q7-4V8"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Task" id="d38-Ak-iZZ"/>
+                    <navigationItem key="navigationItem" title="Task Category" id="d38-Ak-iZZ"/>
                     <connections>
                         <outlet property="choresButton" destination="nal-Ju-l0X" id="gQh-d5-YHa"/>
                         <outlet property="freeTimeButton" destination="VkX-7E-hGM" id="sSf-RH-KyA"/>
