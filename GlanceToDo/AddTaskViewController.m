@@ -21,10 +21,10 @@
 
 
 
--(void) toggleOtherButtonColorsOffExcept:(UIButton*)button;
--(void) toggleKeyboardAndColor:(id)sender;
--(void) hideKeyboardOnTouch;
--(void) setButtonProperties;
+//-(void) toggleOtherButtonColorsOffExcept:(UIButton*)button;
+//-(void) toggleKeyboardAndColor:(id)sender;
+//-(void) hideKeyboardOnTouch;
+//-(void) setButtonProperties;
 //-(void) hideAndShowObjectsOnPress:(id)sender;
 
 
@@ -145,11 +145,12 @@
     
     self.notification = [CWStatusBarNotification new];
     self.notification.notificationLabelBackgroundColor = [UIColor greenColor];
-    self.notification.notificationLabelFont = [UIFont systemFontOfSize:25];
+    self.notification.notificationLabelFont = [UIFont boldSystemFontOfSize:25];
+//    self.notification.notificationLabel.font = [UIFont boldSystemFontOfSize:25];
     self.notification.notificationAnimationInStyle = CWNotificationAnimationStyleLeft;
     self.notification.notificationStyle = CWNotificationStyleNavigationBarNotification;
     [self.notification displayNotificationWithMessage:@"New Task Added!"
-                                          forDuration:1.5f];
+                                          forDuration:1.0f];
     
 }
 

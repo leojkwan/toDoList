@@ -15,14 +15,11 @@
 
 @implementation HomeTableViewController
 
-- (void)viewDidLoad {
-    
-    
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     self.dataStore = [TasksDataStore sharedTasksDataStore];
-    
-    
-    
+
 }
 
 
@@ -44,7 +41,6 @@
         
         [self.dataStore.listOfSections[indexPath.section] removeObjectAtIndex:indexPath.row];
 
-        
         [self.tableView reloadData]; // tell table to refresh now
         
         NSLog(@"%@", self.dataStore.listOfSections);
