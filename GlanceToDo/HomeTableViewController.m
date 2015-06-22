@@ -7,6 +7,7 @@
 //
 
 #import "HomeTableViewController.h"
+#import "MyCustomTableViewCell.h"
 
 @interface HomeTableViewController ()
 
@@ -121,9 +122,11 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"taskCell" forIndexPath:indexPath];
-//    cell.leftUtilityButtons = [self leftButtons];
-//        cell.delegate = self;
+    MyCustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"taskCustomCell" forIndexPath:indexPath];
+    
+    
+    cell.leftUtilityButtons = [self leftButtons];
+        cell.delegate = self;
 
 
 //    NSMutableArray *reusableTasks = [[NSMutableArray alloc] init];

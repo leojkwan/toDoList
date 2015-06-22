@@ -17,6 +17,7 @@
 @property (nonatomic, strong) UITapGestureRecognizer *tap;
 @property (weak, nonatomic) IBOutlet UITextView *taskTextField;
 @property (nonatomic, strong) CWStatusBarNotification *notification;
+@property (weak, nonatomic) IBOutlet UILabel *promptLabel;
 
 
 
@@ -24,6 +25,8 @@
 -(void) toggleKeyboardAndColor:(id)sender;
 -(void) hideKeyboardOnTouch;
 -(void) setButtonProperties;
+-(void) hideAndShowObjectsOnPress:(id)sender;
+
 
 
 @end
@@ -33,6 +36,7 @@
 - (void)viewDidLoad {
     self.dataStore = [TasksDataStore sharedTasksDataStore];
     [super viewDidLoad];
+    self.taskTextField.hidden = YES;
     [self.taskTextField setEditable:NO];
     [self.taskTextField setDelegate:self];
     [self hideKeyboardOnTouch];
@@ -56,6 +60,8 @@
     if (self.passedTypeName == self.dataStore.startTask) {
         [[TasksDataStore sharedTasksDataStore].startList   addObject:newTaskCreated];
         
+
+        
     } else if (self.passedTypeName == self.dataStore.continueTask) {
         [[TasksDataStore sharedTasksDataStore].continueList   addObject:newTaskCreated];
         
@@ -77,35 +83,44 @@
 -(void) setButtonProperties {
     [self.taskTextField setTextContainerInset:UIEdgeInsetsMake(20,12,10,10)];
     self.taskTextField.layer.cornerRadius = 10;
-    self.startButton.layer.cornerRadius = 3;
-    self.continueButton.layer.cornerRadius = 3;
-    self.finishButton.layer.cornerRadius = 3;
-    self.reminderButton.layer.cornerRadius = 3;
+    self.startButton.layer.cornerRadius = 10;
+    self.continueButton.layer.cornerRadius = 10;
+    self.finishButton.layer.cornerRadius = 10;
+    self.reminderButton.layer.cornerRadius = 10;
 }
 
 
 
 - (IBAction)startButtonPressed:(id)sender {
     self.passedTypeName = self.dataStore.startTask;
-    [self toggleKeyboardAndColor:sender];
-   
+    [self hideAndShowObjectsOnPress:sender];
 
 }
 
 - (IBAction)continueButtonPressed:(id)sender {
     self.passedTypeName = self.dataStore.continueTask;
-    [self toggleKeyboardAndColor:sender];
+    [self hideAndShowObjectsOnPress:sender];
+
 
 }
 
 - (IBAction)finishButtonPressed:(id)sender {
     self.passedTypeName = self.dataStore.finishTask;
-    [self toggleKeyboardAndColor:sender];
+    [self hideAndShowObjectsOnPress:sender];
+
+
 }
 
 - (IBAction)reminderButttonPressed:(id)sender {
     self.passedTypeName = self.dataStore.reminderTask;
+    [self hideAndShowObjectsOnPress:sender];
+}
+
+
+-(void) hideAndShowObjectsOnPress:(id)sender {
     [self toggleKeyboardAndColor:sender];
+    self.taskTextField.hidden = NO;
+    self.promptLabel.hidden = YES;
 }
 
 
