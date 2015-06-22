@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *reminderButton;
 @property (nonatomic, strong) UITapGestureRecognizer *tap;
 @property (weak, nonatomic) IBOutlet UITextView *taskTextField;
+@property (nonatomic, strong) CWStatusBarNotification *notification;
 
 
 
@@ -37,8 +38,15 @@
     [self hideKeyboardOnTouch];
     [self.view setNeedsDisplay];
     [self setButtonProperties];
-
 }
+
+
+
+
+
+
+
+#pragma mark - Buttons
 
 
 - (IBAction)saveButtonPressed:(id)sender {
@@ -58,21 +66,13 @@
         [[TasksDataStore sharedTasksDataStore].reminderList   addObject:newTaskCreated];
     }
     
+    
+    [self taskAddedNotificationOfCategory];
         NSArray* array = [self.navigationController viewControllers]; // these next two lines pop us back 2 view controllers instead if one.
         [self.navigationController popToViewController:[array objectAtIndex:0] animated:YES];
 }
 
 
-
-
-
-
-
--(void) hideKeyboardOnTouch {
-    UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismissKeyboard)];
-    tapGesture.cancelsTouchesInView = NO;
-    [self.view addGestureRecognizer:tapGesture];
-}
 
 -(void) setButtonProperties {
     [self.taskTextField setTextContainerInset:UIEdgeInsetsMake(20,12,10,10)];
@@ -83,19 +83,12 @@
     self.reminderButton.layer.cornerRadius = 3;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
-
-
 
 
 - (IBAction)startButtonPressed:(id)sender {
     self.passedTypeName = self.dataStore.startTask;
     [self toggleKeyboardAndColor:sender];
+   
 
 }
 
@@ -116,8 +109,23 @@
 }
 
 
+#pragma mark - Notifications
 
 
+-(void) taskAddedNotificationOfCategory {
+    
+    self.notification = [CWStatusBarNotification new];
+    self.notification.notificationLabelBackgroundColor = [UIColor greenColor];
+    self.notification.notificationLabelFont = [UIFont systemFontOfSize:25];
+    self.notification.notificationAnimationInStyle = CWNotificationAnimationStyleLeft;
+    self.notification.notificationStyle = CWNotificationStyleNavigationBarNotification;
+    [self.notification displayNotificationWithMessage:@"New Task Added!"
+                                          forDuration:1.5f];
+    
+}
+
+
+#pragma mark - Keyboard
 
 -(void) toggleKeyboardAndColor:(id)sender {
     [self toggleOtherButtonColorsOffExcept:sender];
@@ -125,6 +133,11 @@
     [self.taskTextField becomeFirstResponder];
 }
 
+-(void) hideKeyboardOnTouch {
+    UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismissKeyboard)];
+    tapGesture.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:tapGesture];
+}
 
 
 
@@ -149,6 +162,13 @@
     [textField resignFirstResponder];
     return YES;
 }
+
+//- (void)didReceiveMemoryWarning {
+//    [super didReceiveMemoryWarning];
+//    // Dispose of any resources that can be recreated.
+//}
+//
+
 
 /*
 #pragma mark - Navigation

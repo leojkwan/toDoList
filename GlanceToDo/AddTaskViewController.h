@@ -10,7 +10,8 @@
 #import "Task.h"
 #import "TasksDataStore.h"
 #import "HomeTableViewController.h"
-
+#import <CWStatusBarNotification.h>
+#import "taskCategory.h"
 
 @interface AddTaskViewController : UIViewController
 
@@ -18,5 +19,6 @@
 @property (nonatomic, strong) taskCategory *passedCategoryName;
 @property (nonatomic, strong) taskType *passedTypeName;
 @property (nonatomic, strong) TasksDataStore *dataStore;
+
 
 @end
