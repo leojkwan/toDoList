@@ -11,6 +11,8 @@
 #import "taskCategory.h" 
 #import "TasksDataStore.h"
 #import "taskType.h"
+#import <SWTableViewCell.h>
+
 
 @interface HomeTableViewController : UITableViewController
 @property (nonatomic, strong) TasksDataStore *dataStore;

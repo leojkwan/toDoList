@@ -1,10 +1,13 @@
 PODS:
   - CWStatusBarNotification (2.2.6)
+  - SWTableViewCell (0.3.7)
 
 DEPENDENCIES:
   - CWStatusBarNotification (~> 2.2.6)
+  - SWTableViewCell (~> 0.3.7)
 
 SPEC CHECKSUMS:
   CWStatusBarNotification: b7d08c63bbfcceee08b63cab041560a6f5cdefb6
+  SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
 
 COCOAPODS: 0.37.2

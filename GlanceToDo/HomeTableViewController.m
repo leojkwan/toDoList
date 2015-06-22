@@ -18,40 +18,17 @@
     
     
     [super viewDidLoad];
-    
-    
-//    taskCategory *chores = [[taskCategory alloc] initWithTitle:@"Chores"];
-//    taskCategory *freeTime = [[taskCategory alloc] initWithTitle:@"Free Time"];
-//    taskCategory *work = [[taskCategory alloc] initWithTitle:@"Work"];
-//    taskCategory *social = [[taskCategory alloc] initWithTitle:@"Social"];
-//    
-//    taskType *startTask = [[taskType alloc] initWithName:@"Start"]; 
-//    taskType *continueTask = [[taskType alloc] initWithName:@"Continue"];
-//    taskType *finishTask = [[taskType alloc] initWithName:@"Finish"];
-//    taskType *reminderTask = [[taskType alloc] initWithName:@"Reminder"];
- 
- 
-    
     self.dataStore = [TasksDataStore sharedTasksDataStore];
     
     
     
-//    Task *task1 = [[Task alloc] initWithName:@"s1" category:chores type:startTask];
-//    Task *task2 = [[Task alloc] initWithName:@"s2" category:chores type:startTask];
-//    Task *task3 = [[Task alloc] initWithName:@"c1" category:chores type:continueTask];
-//    Task *task4 = [[Task alloc] initWithName:@"c2" category:chores type:continueTask];
-//
-//    
-//    self.dataStore.tasksList = @[task1,task2,task3, task4];
-    
-
-    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
+
+
+#pragma mark - Left Swipe Utility
+
 
 
 #pragma mark - Cells
@@ -122,11 +99,32 @@
 
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView
+//
+//- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
+//{
+//    static NSString *cellIdentifier = @"MyCustomCell";
+//    
+//    TestTableViewCell *cell = (TestTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier
+//                                                                                   forIndexPath:indexPath];
+//    
+//    cell.leftUtilityButtons = [self leftButtons];
+//    cell.rightUtilityButtons = [self rightButtons];
+//    cell.delegate = self;
+//    
+//    cell.customLabel.text = @"Some Text";
+//    cell.customImageView.image = [UIImage imageNamed:@"MyAwesomeTableCellImage"];
+//    //        [cell set:cell.frame.size.height];
+//    return cell;
+//}
+
+
+-(UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"taskCell" forIndexPath:indexPath];
-   
+//    cell.leftUtilityButtons = [self leftButtons];
+//        cell.delegate = self;
+
 
 //    NSMutableArray *reusableTasks = [[NSMutableArray alloc] init];
 //    
@@ -151,6 +149,51 @@
 
 
 
+- (NSArray *)leftButtons
+{
+    NSMutableArray *leftUtilityButtons = [NSMutableArray new];
+    
+    [leftUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:0.07 green:0.75f blue:0.16f alpha:1.0]
+                                                icon:[UIImage imageNamed:@"check.png"]];
+    [leftUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:1.0f green:1.0f blue:0.35f alpha:1.0]
+                                                icon:[UIImage imageNamed:@"clock.png"]];
+    [leftUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:1.0f green:0.231f blue:0.188f alpha:1.0]
+                                                icon:[UIImage imageNamed:@"cross.png"]];
+    [leftUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:0.55f green:0.27f blue:0.07f alpha:1.0]
+                                                icon:[UIImage imageNamed:@"logo"]];
+    
+    return leftUtilityButtons;
+}
+
+
+#pragma mark - SWTableViewDelegate
+
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index {
+    switch (index) {
+        case 0:
+            NSLog(@"check button was pressed");
+            break;
+        case 1:
+            NSLog(@"clock button was pressed");
+            break;
+        case 2:
+            NSLog(@"cross button was pressed");
+            break;
+        case 3:
+            NSLog(@"list button was pressed");
+        default:
+            break;
+    }
+}
+
+
+
+
+
 
 
 
@@ -159,7 +202,10 @@
     [self.tableView reloadData];
 }
 
-
+//- (void)didReceiveMemoryWarning {
+//    [super didReceiveMemoryWarning];
+//    // Dispose of any resources that can be recreated.
+//}
 
 //-(BOOL)prefersStatusBarHidden{
 //    return YES;
@@ -209,5 +255,7 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
 
 @end
