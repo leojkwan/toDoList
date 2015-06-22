@@ -9,7 +9,8 @@
 #import "AddTaskViewController.h"
 #import <UIKit/UIKit.h>
 
-@interface AddTaskViewController ()
+@interface AddTaskViewController () <UITextViewDelegate>
+
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
 @property (weak, nonatomic) IBOutlet UIButton *continueButton;
 @property (weak, nonatomic) IBOutlet UIButton *finishButton;
@@ -20,12 +21,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *promptLabel;
 
 
-
-//-(void) toggleOtherButtonColorsOffExcept:(UIButton*)button;
-//-(void) toggleKeyboardAndColor:(id)sender;
-//-(void) hideKeyboardOnTouch;
-//-(void) setButtonProperties;
-//-(void) hideAndShowObjectsOnPress:(id)sender;
 
 
 

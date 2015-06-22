@@ -7,9 +7,8 @@
 //
 
 #import "HomeTableViewController.h"
-#import "MyCustomTableViewCell.h"
 
-@interface HomeTableViewController ()
+@interface HomeTableViewController () <SWTableViewCellDelegate>
 
 @end
 
@@ -118,30 +117,16 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    MyCustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"taskCustomCell" forIndexPath:indexPath];
+    SWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"taskCustomCell" forIndexPath:indexPath];
     
     
     cell.leftUtilityButtons = [self leftButtons];
         cell.delegate = self;
 
 
-//    NSMutableArray *reusableTasks = [[NSMutableArray alloc] init];
-//    
-//
-//    
-//    for (NSMutableArray *tasksOfACertainType  in self.dataStore.listOfSections) {
-//        
-//        for (NSInteger i = 0; i < tasksOfACertainType.count; i++) {
-            cell.textLabel.text = [self.dataStore.listOfSections[indexPath.section][indexPath.row] name];
-//        }
-    
-//        if ([task.type.name isEqualToString:self.tasksOfACertainType[indexPath.section]]) {
-//            [reusableTasks addObject:task.name];
-//        }
-//    }
-    
-    
 
+
+    cell.textLabel.text = [self.dataStore.listOfSections[indexPath.section][indexPath.row] name];
 
     return cell;
 }
