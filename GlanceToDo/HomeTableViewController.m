@@ -47,38 +47,98 @@
 
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index {
     switch (index) {
-        case 0:
+       
+        
+        {case 0:
             NSLog(@"check button was pressed");
             NSIndexPath *currentIndexPath = [self.tableView indexPathForCell:cell];
 
             // grab the current index path
             
             if (currentIndexPath.section < 3) {
-            // grab the appropriate section arrays, then the task from that
-            NSMutableArray *thisSectionArray = self.dataStore.listOfSections[currentIndexPath.section];
-            NSMutableArray *nextSectionArray = self.dataStore.listOfSections[currentIndexPath.section +1];
-            Task *taskToMove = thisSectionArray[currentIndexPath.row];
-            
-            // remove the task from the original array, and add it to the new one
-            [thisSectionArray removeObject: taskToMove];
-            [nextSectionArray addObject: taskToMove];
-//            
-            // create new index path using count of nextSectionArray and next section (currentIP.section +1)
-            NSIndexPath *desiredIndexPath = [NSIndexPath indexPathForRow: (nextSectionArray.count -1) inSection:(currentIndexPath.section +1)];
-            taskToMove.typeObject = self.dataStore.listOfTypes[desiredIndexPath.section];
-            [self.tableView reloadData];
+                // grab the appropriate section arrays, then the task from that
+                NSMutableArray *thisSectionArray = self.dataStore.listOfSections[currentIndexPath.section];
+                NSMutableArray *nextSectionArray = self.dataStore.listOfSections[currentIndexPath.section + 1];
+                Task *taskToMove = thisSectionArray[currentIndexPath.row];
+                
+                // remove the task from the original array, and add it to the new one
+                [thisSectionArray removeObject: taskToMove];
+                [nextSectionArray addObject: taskToMove];
+    
+                // create new index path using count of nextSectionArray and next section (currentIP.section +1)
+                NSIndexPath *desiredIndexPath = [NSIndexPath indexPathForRow: (nextSectionArray.count -1) inSection:(currentIndexPath.section +1)];
+                taskToMove.typeObject = self.dataStore.listOfTypes[desiredIndexPath.section];
+                [self.tableView reloadData];
             } else {
-            
+                
+                // grab the appropriate section arrays, then the task from that
+                NSMutableArray *thisSectionArray = self.dataStore.listOfSections[currentIndexPath.section];
+                NSMutableArray *nextSectionArray = self.dataStore.listOfSections[currentIndexPath.section - 3];
+                Task *taskToMove = thisSectionArray[currentIndexPath.row];
+                
+                // remove the task from the original array, and add it to the new one
+                [thisSectionArray removeObject: taskToMove];
+                [nextSectionArray addObject: taskToMove];
+                //
+                // create new index path using count of nextSectionArray and next section (currentIP.section +1)
+                NSIndexPath *desiredIndexPath = [NSIndexPath indexPathForRow: (nextSectionArray.count -1) inSection:(currentIndexPath.section -3)];
+                taskToMove.typeObject = self.dataStore.listOfTypes[desiredIndexPath.section];
+                [self.tableView reloadData];
+
             }
-//
-//            break;
-//        case 1:
-//            NSLog(@"clock button was pressed");
-//            break;
-//        default:
-//            break;
-    }
-}
+
+        break;}
+        {case 1:
+            
+            NSLog(@"check button was pressed");
+            NSIndexPath *currentIndexPath = [self.tableView indexPathForCell:cell];
+            
+            // grab the current index path
+            
+            if (currentIndexPath.section > 0) {
+                // grab the appropriate section arrays, then the task from that
+                NSMutableArray *thisSectionArray = self.dataStore.listOfSections[currentIndexPath.section];
+                NSMutableArray *nextSectionArray = self.dataStore.listOfSections[currentIndexPath.section - 1];
+                Task *taskToMove = thisSectionArray[currentIndexPath.row];
+                
+                // remove the task from the original array, and add it to the new one
+                [thisSectionArray removeObject: taskToMove];
+                [nextSectionArray addObject: taskToMove];
+                
+                // create new index path using count of nextSectionArray and next section (currentIP.section +1)
+                NSIndexPath *desiredIndexPath = [NSIndexPath indexPathForRow: (nextSectionArray.count -1) inSection:(currentIndexPath.section - 1)];
+                taskToMove.typeObject = self.dataStore.listOfTypes[desiredIndexPath.section];
+                [self.tableView reloadData];
+            }
+            
+            else {
+                
+                // grab the appropriate section arrays, then the task from that
+                NSMutableArray *thisSectionArray = self.dataStore.listOfSections[currentIndexPath.section];
+                NSMutableArray *nextSectionArray = self.dataStore.listOfSections[currentIndexPath.section +3];
+                Task *taskToMove = thisSectionArray[currentIndexPath.row];
+                
+                // remove the task from the original array, and add it to the new one
+                [thisSectionArray removeObject: taskToMove];
+                [nextSectionArray addObject: taskToMove];
+                //
+                // create new index path using count of nextSectionArray and next section (currentIP.section +1)
+                NSIndexPath *desiredIndexPath = [NSIndexPath indexPathForRow: (nextSectionArray.count -1) inSection:(currentIndexPath.section +3)];
+                taskToMove.typeObject = self.dataStore.listOfTypes[desiredIndexPath.section];
+                [self.tableView reloadData];
+
+            
+                break;}
+            
+            
+            
+            
+        }
+            
+        default:
+            break;
+            }
+            }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
@@ -156,6 +216,24 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     [super viewWillAppear:animated];
     [self.tableView reloadData];
 }
+
+
+
+#pragma mark - Notifications
+
+//-(void) WarningNotificationOfCategory {
+//    
+//    self.notification = [CWStatusBarNotification new];
+//    self.notification.notificationLabelBackgroundColor = [UIColor greenColor];
+//    self.notification.notificationLabelFont = [UIFont boldSystemFontOfSize:25];
+//    //    self.notification.notificationLabel.font = [UIFont boldSystemFontOfSize:25];
+//    self.notification.notificationAnimationInStyle = CWNotificationAnimationStyleLeft;
+//    self.notification.notificationStyle = CWNotificationStyleNavigationBarNotification;
+//    [self.notification displayNotificationWithMessage:@"New Task Added!"
+//                                          forDuration:1.0f];
+//    
+//}
+
 
 //- (void)didReceiveMemoryWarning {
 //    [super didReceiveMemoryWarning];
