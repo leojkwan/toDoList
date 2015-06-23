@@ -76,42 +76,9 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    
-//    NSMutableArray *reusableTasksOfACerTainType = [[NSMutableArray alloc] init];
-
-//    for (NSInteger i = 0; i < [self.dataStore.listOfSections count]; i++) {
-//        return [self.dataStore.listOfSections[section] count];
-//        }
-//
-//        if ([type.name isEqualToString:self.tasksOfACertainType[section]]) {
-//            [reusableTasksOfACerTainType addObject:task];
-//        }
-//    }
-//
-//    return reusableTasksOfACerTainType.count;
+   
     return [self.dataStore.listOfSections[section] count];
 }
-
-
-
-//
-//- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
-//{
-//    static NSString *cellIdentifier = @"MyCustomCell";
-//    
-//    TestTableViewCell *cell = (TestTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier
-//                                                                                   forIndexPath:indexPath];
-//    
-//    cell.leftUtilityButtons = [self leftButtons];
-//    cell.rightUtilityButtons = [self rightButtons];
-//    cell.delegate = self;
-//    
-//    cell.customLabel.text = @"Some Text";
-//    cell.customImageView.image = [UIImage imageNamed:@"MyAwesomeTableCellImage"];
-//    //        [cell set:cell.frame.size.height];
-//    return cell;
-//}
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView
