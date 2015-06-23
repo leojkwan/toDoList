@@ -24,7 +24,56 @@
 }
 
 
-#pragma mark - Cells
+
+
+#pragma mark - SWTableViewDelegate
+
+- (NSArray *)leftButtons
+{
+    NSMutableArray *leftUtilityButtons = [NSMutableArray new];
+    
+    [leftUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:0.57 green:0.75f blue:0.76f alpha:.8]
+                                                icon:[UIImage imageNamed:@"check.png"]];
+    [leftUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:.7f green:5.0f blue:0.35f alpha:.5]
+                                                icon:[UIImage imageNamed:@"clock.png"]];
+    
+    
+    return leftUtilityButtons;
+}
+
+
+
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index {
+    switch (index) {
+        case 0:
+            NSLog(@"check button was pressed");
+            
+            SWTableViewCell *cellToExtract = cell.
+            
+            // old index path
+            NSIndexPath *oldIndexPath = [[NSIndexPath indexPathForRow:[cell  ] inSection:<#(NSInteger)#>]]
+            // new index path
+            
+            //cell we want to extract
+            // remove cell
+            // add cell
+            
+            
+            
+            
+            
+            
+            
+            break;
+        case 1:
+            NSLog(@"clock button was pressed");
+            break;
+        default:
+            break;
+    }
+}
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
@@ -44,14 +93,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 
--(NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    
-    if ([self.dataStore.listOfSections[section] count] != 0) {
-        taskType *typeAtThisIndex = [self.dataStore.listOfSections[section][0] typeObject];
-        return [typeAtThisIndex name];
-    }
-    return nil;
-}
 
 
 
@@ -95,37 +136,13 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     return cell;
 }
 
-
-
-- (NSArray *)leftButtons
-{
-    NSMutableArray *leftUtilityButtons = [NSMutableArray new];
+-(NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     
-    [leftUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:0.57 green:0.75f blue:0.76f alpha:.8]
-                                                icon:[UIImage imageNamed:@"check.png"]];
-    [leftUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:1.0f green:1.0f blue:0.35f alpha:1.0]
-                                                icon:[UIImage imageNamed:@"clock.png"]];
-    
-    
-    return leftUtilityButtons;
-}
-
-
-#pragma mark - SWTableViewDelegate
-
-- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index {
-    switch (index) {
-        case 0:
-            NSLog(@"check button was pressed");
-            break;
-        case 1:
-            NSLog(@"clock button was pressed");
-            break;
-               default:
-            break;
+    if ([self.dataStore.listOfSections[section] count] != 0) {
+        taskType *typeAtThisIndex = [self.dataStore.listOfSections[section][0] typeObject];
+        return [typeAtThisIndex name];
     }
+    return nil;
 }
 
 
