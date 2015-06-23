@@ -15,6 +15,7 @@
 + (instancetype)sharedTasksDataStore;
 
 @property (nonatomic, strong) NSMutableArray *listOfSections;
+@property (nonatomic, strong) NSMutableArray *listOfTypes;
 @property (nonatomic, strong) NSMutableArray *startList;
 @property (nonatomic, strong) NSMutableArray *continueList;
 @property (nonatomic, strong) NSMutableArray *finishList;

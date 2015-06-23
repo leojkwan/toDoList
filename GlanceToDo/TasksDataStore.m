@@ -20,15 +20,17 @@
     return _sharedTasksDataStore;
 }
 
+
+
 -(instancetype)init {
     self = [super init];
-    
     if (self) {
         _startList = [[NSMutableArray alloc] init];
         _continueList = [[NSMutableArray alloc] init];
         _finishList = [[NSMutableArray alloc] init];
         _reminderList = [[NSMutableArray alloc] init];
         _listOfSections = [[NSMutableArray alloc] initWithObjects:self.startList,self.continueList,self.finishList,self.reminderList, nil];
+        _listOfTypes = [[NSMutableArray alloc] initWithObjects:@"Start",@"Continue",@"Finish",@"Reminder", nil];
         _chores = [[taskCategory alloc] initWithTitle:@"Chores"];
         _freeTime = [[taskCategory alloc] initWithTitle:@"Free Time"];
         _work = [[taskCategory alloc] initWithTitle:@"Work"];
@@ -38,6 +40,12 @@
         _finishTask = [[taskType alloc] initWithName:@"Finish"];
         _reminderTask = [[taskType alloc] initWithName:@"Reminder"];
         
+        
+        
+        Task *startTask = [[Task alloc] initWithName:@"Clean" category:self.chores type:self.startTask];
+        
+        [self.finishList addObject:startTask];
+
     }
     return self;
 }
