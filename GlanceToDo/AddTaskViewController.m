@@ -53,17 +53,17 @@
     Task *newTaskCreated = [[Task alloc] initWithName:self.taskTextField.text category:self.passedCategoryName type:self.passedTypeName];
     
     
-    if ([self.passedTypeName.name isEqualToString:[NSString stringWithFormat:@"%@", self.dataStore.listOfTypes[0]]]) {
+    if (self.passedTypeName.name == self.dataStore.listOfTypes[0]) {
         [[TasksDataStore sharedTasksDataStore].startList   addObject:newTaskCreated];
         
         
-    } else if ([self.passedTypeName.name isEqualToString:[NSString stringWithFormat:@"%@", self.dataStore.listOfTypes[1]]]) {
+    } else if (self.passedTypeName.name == self.dataStore.listOfTypes[1]) {
         [[TasksDataStore sharedTasksDataStore].continueList   addObject:newTaskCreated];
         
-    }  else if ([self.passedTypeName.name isEqualToString:[NSString stringWithFormat:@"%@", self.dataStore.listOfTypes[2]]]) {
+    }  else if (self.passedTypeName.name == self.dataStore.listOfTypes[2]) {
         [[TasksDataStore sharedTasksDataStore].finishList   addObject:newTaskCreated];
         
-    }  else if ([self.passedTypeName.name isEqualToString:[NSString stringWithFormat:@"%@", self.dataStore.listOfTypes[3]]]) {
+    }  else if (self.passedTypeName.name == self.dataStore.listOfTypes[3]) {
         [[TasksDataStore sharedTasksDataStore].reminderList   addObject:newTaskCreated];
     }
     

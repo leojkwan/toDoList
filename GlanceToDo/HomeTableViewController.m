@@ -49,29 +49,34 @@
     switch (index) {
         case 0:
             NSLog(@"check button was pressed");
+            NSIndexPath *currentIndexPath = [self.tableView indexPathForCell:cell];
+
+            // grab the current index path
             
-            SWTableViewCell *cellToExtract = cell.
+            if (currentIndexPath.section < 3) {
+            // grab the appropriate section arrays, then the task from that
+            NSMutableArray *thisSectionArray = self.dataStore.listOfSections[currentIndexPath.section];
+            NSMutableArray *nextSectionArray = self.dataStore.listOfSections[currentIndexPath.section +1];
+            Task *taskToMove = thisSectionArray[currentIndexPath.row];
             
-            // old index path
-            NSIndexPath *oldIndexPath = [[NSIndexPath indexPathForRow:[cell  ] inSection:<#(NSInteger)#>]]
-            // new index path
+            // remove the task from the original array, and add it to the new one
+            [thisSectionArray removeObject: taskToMove];
+            [nextSectionArray addObject: taskToMove];
+//            
+            // create new index path using count of nextSectionArray and next section (currentIP.section +1)
+            NSIndexPath *desiredIndexPath = [NSIndexPath indexPathForRow: (nextSectionArray.count -1) inSection:(currentIndexPath.section +1)];
+            taskToMove.typeObject = self.dataStore.listOfTypes[desiredIndexPath.section];
+            [self.tableView reloadData];
+            } else {
             
-            //cell we want to extract
-            // remove cell
-            // add cell
-            
-            
-            
-            
-            
-            
-            
-            break;
-        case 1:
-            NSLog(@"clock button was pressed");
-            break;
-        default:
-            break;
+            }
+//
+//            break;
+//        case 1:
+//            NSLog(@"clock button was pressed");
+//            break;
+//        default:
+//            break;
     }
 }
 
@@ -139,8 +144,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 -(NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     
     if ([self.dataStore.listOfSections[section] count] != 0) {
-        taskType *typeAtThisIndex = [self.dataStore.listOfSections[section][0] typeObject];
-        return [typeAtThisIndex name];
+//        taskType *typeAtThisIndex = [self.dataStore.listOfSections[section][0] typeObject];
+        return self.dataStore.listOfTypes[section];
     }
     return nil;
 }
