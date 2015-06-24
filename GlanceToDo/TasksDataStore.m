@@ -42,9 +42,18 @@
         
         
         
-        Task *startTask = [[Task alloc] initWithName:@"Clean" category:self.chores type:self.startTask];
-        
-        [self.finishList addObject:startTask];
+        Task *startTask = [[Task alloc] initWithName:@"Tidy up room" category:self.chores type:self.startTask];
+        Task *continueTask = [[Task alloc] initWithName:@"Cocoapods assignment" category:self.chores type:self.continueTask];
+        Task *continueTask2 = [[Task alloc] initWithName:@"Running through the six" category:self.social type:self.continueTask];
+        Task *finishTask = [[Task alloc] initWithName:@"reading Paul Graham article on scaling" category:self.chores type:self.finishTask];
+        Task *reminder = [[Task alloc] initWithName:@"call John when I go home" category:self.chores type:self.reminderTask];
+
+        [self.startList addObject:startTask];
+        [self.continueList addObject:continueTask];
+        [self.continueList addObject:continueTask2];
+        [self.finishList addObject:finishTask];
+        [self.reminderList addObject:reminder];
+
 
     }
     return self;

@@ -32,10 +32,10 @@
     NSMutableArray *leftUtilityButtons = [NSMutableArray new];
     
     [leftUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:0.57 green:0.45f blue:0.76f alpha:.8]
+     [UIColor colorWithRed:0.284 green:0.884 blue:0.914 alpha:.3]
                                                 icon:[UIImage imageNamed:@"Down"]];
     [leftUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:.7f green:5.0f blue:0.35f alpha:.8]
+     [UIColor colorWithRed:0.784 green:0.584 blue:0.214 alpha:.3]
                                                 icon:[UIImage imageNamed:@"Up"]];
     
     

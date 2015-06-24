@@ -5,19 +5,27 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--My Tasks-->
+        <!--My To-Do List-->
         <scene sceneID="1ai-Qx-7WL">
             <objects>
                 <tableViewController id="U0v-xn-Ovn" customClass="HomeTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="75" sectionHeaderHeight="10" sectionFooterHeight="10" id="vfh-WY-tFW">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="45" sectionHeaderHeight="10" sectionFooterHeight="10" id="vfh-WY-tFW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="taskCustomCell" rowHeight="75" id="VIw-4h-g6e" customClass="SWTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="taskCustomCell" textLabel="mdo-Xn-PH8" rowHeight="45" style="IBUITableViewCellStyleDefault" id="VIw-4h-g6e" customClass="SWTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VIw-4h-g6e" id="0Pa-pP-mda">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mdo-Xn-PH8">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                            <color key="textColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -27,7 +35,7 @@
                             <outlet property="delegate" destination="U0v-xn-Ovn" id="o4r-7f-d2f"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="My Tasks" id="wCD-rw-yem">
+                    <navigationItem key="navigationItem" title="My To-Do List" id="wCD-rw-yem">
                         <barButtonItem key="rightBarButtonItem" width="10" systemItem="add" id="GFF-xn-NhJ">
                             <connections>
                                 <segue destination="5t8-le-cYp" kind="push" id="vcG-Yk-fWe"/>
