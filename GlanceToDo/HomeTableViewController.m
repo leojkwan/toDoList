@@ -9,7 +9,6 @@
 #import "HomeTableViewController.h"
 
 @interface HomeTableViewController () <SWTableViewCellDelegate>
-
 @end
 
 @implementation HomeTableViewController
@@ -19,7 +18,7 @@
     [super viewDidLoad];
     self.dataStore = [TasksDataStore sharedTasksDataStore];
 
-
+    
 
 }
 
@@ -33,11 +32,11 @@
     NSMutableArray *leftUtilityButtons = [NSMutableArray new];
     
     [leftUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:0.57 green:0.75f blue:0.76f alpha:.8]
-                                                icon:[UIImage imageNamed:@"check.png"]];
+     [UIColor colorWithRed:0.57 green:0.45f blue:0.76f alpha:.8]
+                                                icon:[UIImage imageNamed:@"Down"]];
     [leftUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:.7f green:5.0f blue:0.35f alpha:.5]
-                                                icon:[UIImage imageNamed:@"clock.png"]];
+     [UIColor colorWithRed:.7f green:5.0f blue:0.35f alpha:.8]
+                                                icon:[UIImage imageNamed:@"Up"]];
     
     
     return leftUtilityButtons;
@@ -184,30 +183,58 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 
+
+    
+
 -(UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    SWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"taskCustomCell" forIndexPath:indexPath];
+
+
     
+    SWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"taskCustomCell" forIndexPath:indexPath];
+//    NSIndexPath *currentIndexPath = [self.tableView indexPathForCell:cell];
+//    NSMutableArray *thisSectionArray = self.dataStore.listOfSections[currentIndexPath.section];
+//    Task *taskInCell = thisSectionArray[currentIndexPath.row];
+//    NSString *categoryStringInTask = taskInCell.categoryObject.title;
+
+    
+    
+    
+    
+        //Trying to figure out cell colors
+//    
+//    if (thisSectionArray.count > 0) {
+//                if ([categoryStringInTask isEqualToString:@"Chores"]) {
+//                cell.backgroundColor = [UIColor colorWithRed:0.87 green:0.75f blue:0.76f alpha:.8];
+//            } else if ([categoryStringInTask isEqualToString:@"Free Time"]) {
+//                cell.backgroundColor = [UIColor colorWithRed:0.57 green:0.95f blue:0.46f alpha:.2];
+//            } else if ([categoryStringInTask isEqualToString:@"Work"]) {
+//                cell.backgroundColor = [UIColor colorWithRed:.9 green:0.75f blue:0.76f alpha:.8];
+//            } else if ([categoryStringInTask isEqualToString:@"Social"]) {
+//                cell.backgroundColor = [UIColor colorWithRed:0.57 green:0.95f blue:0.76f alpha:.8];
+//            }
+//     }
+
     
     cell.leftUtilityButtons = [self leftButtons];
-        cell.delegate = self;
+    cell.delegate = self;
 
-
-
-
+    
     cell.textLabel.text = [self.dataStore.listOfSections[indexPath.section][indexPath.row] name];
 
     return cell;
 }
 
+
+
+
 -(NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     
-    if ([self.dataStore.listOfSections[section] count] != 0) {
-//        taskType *typeAtThisIndex = [self.dataStore.listOfSections[section][0] typeObject];
+//    if ([self.dataStore.listOfSections[section] count] != 0) {
         return self.dataStore.listOfTypes[section];
-    }
-    return nil;
+//    }
+//    return nil;
 }
 
 

@@ -141,7 +141,7 @@
             </objects>
             <point key="canvasLocation" x="1288.5" y="434.5"/>
         </scene>
-        <!--Add Task View Controller-->
+        <!--Add Task-->
         <scene sceneID="24e-CT-8vr">
             <objects>
                 <viewController id="F9v-eh-SC7" customClass="AddTaskViewController" sceneMemberID="viewController">
@@ -192,7 +192,7 @@
                                 </constraints>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="25"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I have to..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Isf-ie-aN0">
                                 <rect key="frame" x="18" y="133" width="339" height="85"/>
@@ -256,7 +256,8 @@
                             <constraint firstItem="Ejb-Qa-4eB" firstAttribute="top" secondItem="GBD-eE-o04" secondAttribute="bottom" constant="35" id="yxk-8a-x4v"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="T7t-Z4-EDW">
+                    <navigationItem key="navigationItem" title="Add Task" id="T7t-Z4-EDW">
+                        <barButtonItem key="backBarButtonItem" title="Category" id="vVW-R7-RCZ"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="rZE-hW-P6M">
                             <connections>
                                 <action selector="saveButtonPressed:" destination="F9v-eh-SC7" id="5jx-8w-ViK"/>

@@ -10,9 +10,9 @@
 
 @interface ChooseCategoryViewController ()
 
+@property (nonatomic, strong) TasksDataStore *dataStore;
 @property (weak, nonatomic) IBOutlet UIButton *freeTimeButton;
 @property (weak, nonatomic) IBOutlet UIButton *choresButton;
-
 @property (weak, nonatomic) IBOutlet UIButton *workButton;
 @property (weak, nonatomic) IBOutlet UIButton *socialButton;
 
@@ -27,6 +27,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setButtonProperties];
+    self.dataStore = [TasksDataStore sharedTasksDataStore];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,23 +52,24 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     AddTaskViewController *destinationVC = segue.destinationViewController;
-    
-    taskCategory *chores = [[taskCategory alloc] initWithTitle:@"Chores"];
-    taskCategory *freeTime = [[taskCategory alloc] initWithTitle:@"Free Time"];
-    taskCategory *work = [[taskCategory alloc] initWithTitle:@"Work"];
-    taskCategory *social = [[taskCategory alloc] initWithTitle:@"Social"];
+//    
+//    
+//    taskCategory *chores = [[taskCategory alloc] initWithTitle:@"Chores"];
+//    taskCategory *freeTime = [[taskCategory alloc] initWithTitle:@"Free Time"];
+//    taskCategory *work = [[taskCategory alloc] initWithTitle:@"Work"];
+//    taskCategory *social = [[taskCategory alloc] initWithTitle:@"Social"];
 
     if ([segue.identifier isEqualToString:@"choresSegue"]){
-        destinationVC.passedCategoryName = chores;
+        destinationVC.passedCategoryName = self.dataStore.chores;
         NSLog(@"Passing Chores object");
     } else if ([segue.identifier isEqualToString:@"freeTimeSegue"]){
-        destinationVC.passedCategoryName = freeTime;
+        destinationVC.passedCategoryName = self.dataStore.freeTime;
         NSLog(@"Passing Free Time object");
     } else if ([segue.identifier isEqualToString:@"workSegue"]){
-        destinationVC.passedCategoryName = work;
+        destinationVC.passedCategoryName = self.dataStore.work;
         NSLog(@"Passing Work object");
     } else if ([segue.identifier isEqualToString:@"socialSegue"]){
-        destinationVC.passedCategoryName = social;
+        destinationVC.passedCategoryName = self.dataStore.social;
         NSLog(@"Passing Social object");
     }
 

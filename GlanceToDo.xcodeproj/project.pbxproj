@@ -12,7 +12,6 @@
 		942BD27F1B332FB0003F2348 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 942BD27E1B332FB0003F2348 /* AppDelegate.m */; };
 		942BD2821B332FB0003F2348 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 942BD2811B332FB0003F2348 /* ViewController.m */; };
 		942BD2851B332FB0003F2348 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 942BD2831B332FB0003F2348 /* Main.storyboard */; };
-		942BD2871B332FB0003F2348 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 942BD2861B332FB0003F2348 /* Images.xcassets */; };
 		942BD28A1B332FB0003F2348 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 942BD2881B332FB0003F2348 /* LaunchScreen.xib */; };
 		942BD2961B332FB0003F2348 /* GlanceToDoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 942BD2951B332FB0003F2348 /* GlanceToDoTests.m */; };
 		942BD2A11B333980003F2348 /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 942BD2A01B333980003F2348 /* HomeTableViewController.m */; };
@@ -20,6 +19,8 @@
 		942BD2A71B333A22003F2348 /* AddTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 942BD2A61B333A22003F2348 /* AddTaskViewController.m */; };
 		942BD2AA1B333A8E003F2348 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 942BD2A91B333A8E003F2348 /* Task.m */; };
 		942BD2AD1B333AA4003F2348 /* taskCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 942BD2AC1B333AA4003F2348 /* taskCategory.m */; };
+		9491FE3C1B3A381800705D99 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9491FE3B1B3A381800705D99 /* Images.xcassets */; };
+		9491FE3E1B3A38E700705D99 /* Up.png in Resources */ = {isa = PBXBuildFile; fileRef = 9491FE3D1B3A38E700705D99 /* Up.png */; };
 		949584661B3476AA0066E07C /* taskType.m in Sources */ = {isa = PBXBuildFile; fileRef = 949584651B3476AA0066E07C /* taskType.m */; };
 		94FBFA1A1B339FD500ADC887 /* TasksDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FBFA191B339FD500ADC887 /* TasksDataStore.m */; };
 /* End PBXBuildFile section */
@@ -46,7 +47,6 @@
 		942BD2801B332FB0003F2348 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		942BD2811B332FB0003F2348 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		942BD2841B332FB0003F2348 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		942BD2861B332FB0003F2348 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		942BD2891B332FB0003F2348 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		942BD28F1B332FB0003F2348 /* GlanceToDoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GlanceToDoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		942BD2941B332FB0003F2348 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -61,6 +61,8 @@
 		942BD2A91B333A8E003F2348 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		942BD2AB1B333AA4003F2348 /* taskCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = taskCategory.h; sourceTree = "<group>"; };
 		942BD2AC1B333AA4003F2348 /* taskCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = taskCategory.m; sourceTree = "<group>"; };
+		9491FE3B1B3A381800705D99 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Images.xcassets; sourceTree = "<group>"; };
+		9491FE3D1B3A38E700705D99 /* Up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Up.png; sourceTree = "<group>"; };
 		949584641B3476AA0066E07C /* taskType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = taskType.h; sourceTree = "<group>"; };
 		949584651B3476AA0066E07C /* taskType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = taskType.m; sourceTree = "<group>"; };
 		94FBFA181B339FD500ADC887 /* TasksDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksDataStore.h; sourceTree = "<group>"; };
@@ -129,7 +131,7 @@
 		942BD2791B332FB0003F2348 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				942BD2861B332FB0003F2348 /* Images.xcassets */,
+				9491FE3B1B3A381800705D99 /* Images.xcassets */,
 				942BD2881B332FB0003F2348 /* LaunchScreen.xib */,
 				942BD2801B332FB0003F2348 /* ViewController.h */,
 				942BD2811B332FB0003F2348 /* ViewController.m */,
@@ -181,6 +183,7 @@
 				942BD2A31B333A0A003F2348 /* ChooseCategoryViewController.m */,
 				942BD2A51B333A21003F2348 /* AddTaskViewController.h */,
 				942BD2A61B333A22003F2348 /* AddTaskViewController.m */,
+				9491FE3D1B3A38E700705D99 /* Up.png */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -284,9 +287,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9491FE3C1B3A381800705D99 /* Images.xcassets in Resources */,
 				942BD2851B332FB0003F2348 /* Main.storyboard in Resources */,
+				9491FE3E1B3A38E700705D99 /* Up.png in Resources */,
 				942BD28A1B332FB0003F2348 /* LaunchScreen.xib in Resources */,
-				942BD2871B332FB0003F2348 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
