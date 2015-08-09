@@ -48,7 +48,8 @@
     switch (index) {
        
         
-        {case 0:
+        {
+        case 0:
             NSLog(@"check button was pressed");
             NSIndexPath *currentIndexPath = [self.tableView indexPathForCell:cell];
 
@@ -79,9 +80,8 @@
                 [thisSectionArray removeObject: taskToMove];
                 [nextSectionArray addObject: taskToMove];
                 //
-                // create new index path using count of nextSectionArray and next section (currentIP.section +1)
                 NSIndexPath *desiredIndexPath = [NSIndexPath indexPathForRow: (nextSectionArray.count -1) inSection:(currentIndexPath.section -3)];
-                taskToMove.typeObject = self.dataStore.listOfTypes[desiredIndexPath.section];
+                taskToMove.typeObject = self.dataStore.listOfTypes[desiredIndexPath.section]; // not neccesary
                 [self.tableView reloadData];
 
             }

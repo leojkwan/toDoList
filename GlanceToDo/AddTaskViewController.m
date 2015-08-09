@@ -31,9 +31,9 @@
 - (void)viewDidLoad {
     self.dataStore = [TasksDataStore sharedTasksDataStore];
     [super viewDidLoad];
+    self.taskTextField.delegate = self;
     self.taskTextField.hidden = YES;
     [self.taskTextField setEditable:NO];
-    [self.taskTextField setDelegate:self];
     [self hideKeyboardOnTouch];
     [self.view setNeedsDisplay];
     [self setButtonProperties];
@@ -141,7 +141,6 @@
     self.notification = [CWStatusBarNotification new];
     self.notification.notificationLabelBackgroundColor = [UIColor greenColor];
     self.notification.notificationLabelFont = [UIFont boldSystemFontOfSize:25];
-//    self.notification.notificationLabel.font = [UIFont boldSystemFontOfSize:25];
     self.notification.notificationAnimationInStyle = CWNotificationAnimationStyleLeft;
     self.notification.notificationStyle = CWNotificationStyleNavigationBarNotification;
     [self.notification displayNotificationWithMessage:@"New Task Added!"
